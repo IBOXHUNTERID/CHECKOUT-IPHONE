@@ -6,92 +6,95 @@
 <title>Ringkasan Pesanan - Jastip iPhone</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0b0b0c;
-    --card:#111;
-    --text:#fff;
-    --accent:#00cc66;
-    --glass: rgba(255,255,255,0.05);
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(160deg,#060607,var(--bg));
-    color: var(--text);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:20px;
-  }
-  .card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.01), var(--card));
-    padding:20px;
-    border-radius:16px;
-    max-width:500px;
-    width:100%;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    backdrop-filter: blur(8px);
-    border:1px solid rgba(255,255,255,0.08);
-    transition: transform .25s ease;
-  }
-  .card:hover{
-    transform: translateY(-4px);
-  }
-  h2{
-    margin-top:0;
-    margin-bottom:12px;
-    color: var(--accent);
-    text-align:center;
-    font-size:22px;
-  }
-  img{
-    width:100%;
-    border-radius:12px;
-    margin-bottom:12px;
-    transition: transform .3s ease;
-  }
-  img:hover{
-    transform: scale(1.03);
-  }
-  p{
-    margin:6px 0;
-    font-size:15px;
-  }
-  .glass-btn{
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    padding:10px 14px;
-    margin-top:12px;
-    width:100%;
-    border-radius:12px;
-    font-weight:600;
-    cursor:pointer;
-    text-decoration:none;
-    text-align:center;
-    backdrop-filter: blur(8px);
-    transition: transform .15s, box-shadow .15s;
-  }
-  .glass-btn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  }
-  .glass-btn.primary{
-    background: rgba(255,255,255,0.05);
-    color: var(--text);
-    border:1px solid rgba(255,255,255,0.1);
-  }
-  .glass-btn.wa{
-    background: linear-gradient(180deg, rgba(37,211,102,0.12), rgba(37,211,102,0.06));
-    color:#00150a;
-    border:1px solid rgba(37,211,102,0.14);
-  }
-  @media(max-width:600px){
-    .card{padding:16px;}
-  }
+:root{
+  --bg:#0b0b0c;
+  --card:#111;
+  --text:#fff;
+  --accent:#00cc66;
+  --glass: rgba(255,255,255,0.05);
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(160deg,#060607,var(--bg));
+  color: var(--text);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px;
+}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), var(--card));
+  padding:20px;
+  border-radius:16px;
+  max-width:500px;
+  width:100%;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  border:1px solid rgba(255,255,255,0.08);
+  transition: transform .25s ease;
+}
+.card:hover{transform: translateY(-4px);}
+h2{
+  margin-top:0;
+  margin-bottom:12px;
+  color: var(--accent);
+  text-align:center;
+  font-size:22px;
+}
+img{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:12px;
+  transition: transform .3s ease;
+}
+img:hover{transform: scale(1.03);}
+p{margin:6px 0; font-size:15px;}
+.glass-btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  margin-top:12px;
+  width:100%;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+  text-decoration:none;
+  text-align:center;
+  backdrop-filter: blur(8px);
+  transition: transform .15s, box-shadow .15s, background .25s;
+}
+.glass-btn:hover{transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.5);}
+.glass-btn.primary{
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.glass-btn.primary.paid{
+  background: var(--accent);
+  color:#000;
+  border:1px solid var(--accent);
+}
+.glass-btn.wa{
+  background: linear-gradient(180deg, rgba(37,211,102,0.12), rgba(37,211,102,0.06));
+  color:#00150a;
+  border:1px solid rgba(37,211,102,0.14);
+}
+.checkmark{
+  display:inline-block;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#000;
+  mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M20.285 6.709l-11.025 11.025-5.57-5.57 1.414-1.414 4.156 4.155 9.611-9.612z"/></svg>') no-repeat center;
+  mask-size: cover;
+  margin-left:8px;
+}
+@media(max-width:600px){.card{padding:16px;}}
 </style>
 </head>
 <body>
@@ -108,33 +111,47 @@
   <p><b>Alamat:</b> <span id="custAddress"></span></p>
   <p><b>Telepon:</b> <span id="custPhone"></span></p>
   <p><b>WhatsApp:</b> <span id="custWA"></span></p>
-  <a id="waButton" href="#" target="_blank" class="glass-btn wa">Chat via WhatsApp</a>
+
+  <!-- Tombol WA untuk konfirmasi + catatan bukti pembayaran -->
+  <a id="waButton" href="#" target="_blank" class="glass-btn wa">Konfirmasi via WhatsApp (kirim bukti pembayaran)</a>
+
+  <!-- Tombol Sudah Dibayar -->
+  <button id="paidButton" class="glass-btn primary">Sudah Dibayar</button>
 </div>
 
 <script>
-  // Ambil data dari Local Storage
-  const data = JSON.parse(localStorage.getItem('orderData'));
+const data = JSON.parse(localStorage.getItem('orderData'));
 
-  if(data){
-    document.getElementById('prodImg').src = data.img;
-    document.getElementById('prodName').textContent = data.model;
-    document.getElementById('prodStorage').textContent = data.storage;
-    document.getElementById('prodColor').textContent = data.color;
-    document.getElementById('prodPrice').textContent = 'Rp '+Number(data.price).toLocaleString('id-ID');
-    document.getElementById('custName').textContent = data.nama;
-    document.getElementById('custAddress').textContent = data.alamat;
-    document.getElementById('custPhone').textContent = data.telepon;
-    document.getElementById('custWA').textContent = data.wa;
+if(data){
+  document.getElementById('prodImg').src = data.img;
+  document.getElementById('prodName').textContent = data.model;
+  document.getElementById('prodStorage').textContent = data.storage;
+  document.getElementById('prodColor').textContent = data.color;
+  document.getElementById('prodPrice').textContent = 'Rp '+Number(data.price).toLocaleString('id-ID');
+  document.getElementById('custName').textContent = data.nama;
+  document.getElementById('custAddress').textContent = data.alamat;
+  document.getElementById('custPhone').textContent = data.telepon;
+  document.getElementById('custWA').textContent = data.wa;
 
-    // Tombol WhatsApp otomatis
-    const nomorWA = "6281385371544"; // ganti nomor seller
-    const pesanWA = `Halo kak, saya ingin memesan iPhone.\n\nModel: ${data.model}\nStorage: ${data.storage}\nWarna: ${data.color}\nHarga: Rp ${Number(data.price).toLocaleString('id-ID')}\n\nNama: ${data.nama}\nAlamat: ${data.alamat}\nTelepon: ${data.telepon}\nWhatsApp: ${data.wa}\n\nApakah ready kak?`;
+  const nomorWA = "6281385371544"; // ganti nomor seller
+  const pesanWA = `Halo kak, saya sudah transfer untuk iPhone berikut.\n\nModel: ${data.model}\nStorage: ${data.storage}\nWarna: ${data.color}\nHarga: Rp ${Number(data.price).toLocaleString('id-ID')}\n\nNama: ${data.nama}\nAlamat: ${data.alamat}\nTelepon: ${data.telepon}\nWhatsApp: ${data.wa}\n\nMohon konfirmasi dan saya sudah kirim bukti pembayaran. Terima kasih!`;
 
-    document.getElementById('waButton').href = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesanWA);
+  document.getElementById('waButton').href = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesanWA);
 
-  }else{
-    document.getElementById('summaryCard').innerHTML = '<p>Tidak ada data pesanan. Silakan kembali ke halaman pemesanan.</p>';
-  }
+  // Tombol Sudah Dibayar interaktif
+  const paidBtn = document.getElementById('paidButton');
+  paidBtn.addEventListener('click', ()=>{
+    paidBtn.textContent = "Pembayaran Tercatat!";
+    paidBtn.classList.add('paid');
+    // tambahkan checkmark
+    const check = document.createElement('span');
+    check.className = 'checkmark';
+    paidBtn.appendChild(check);
+  });
+
+}else{
+  document.getElementById('summaryCard').innerHTML = '<p>Tidak ada data pesanan. Silakan kembali ke halaman pemesanan.</p>';
+}
 </script>
 
 </body>
