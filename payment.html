@@ -133,7 +133,23 @@ p{margin:6px 0; font-size:15px;}
 .payment-methods{margin-top:16px;}
 .payment-methods p{margin-bottom:6px;}
 .payment-methods button{margin-bottom:6px;}
-#rekDisplay{margin-top:12px; font-size:15px; color:#00cc66;}
+#rekDisplay{margin-top:12px; display:flex; flex-direction:column; gap:10px;}
+
+/* Kotak elegan nomor rekening */
+.rekCard{
+  background: rgba(255,255,255,0.05);
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  font-weight:600;
+  color:#00cc66;
+  font-size:15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+}
+.rekCard p{margin:0;}
+.rekCard .method{font-size:14px; color:rgba(255,255,255,0.7);}
+.rekCard .number{font-size:16px; font-weight:700; margin-top:2px;}
 </style>
 </head>
 <body>
@@ -208,7 +224,7 @@ if(data){
   const rekDisplay = document.getElementById('rekDisplay');
 
   function showQRIS(){
-    rekDisplay.textContent = '';
+    rekDisplay.innerHTML = '';
     data.payment = 'QRIS';
     localStorage.setItem('orderData', JSON.stringify(data));
     updateWA();
@@ -216,7 +232,12 @@ if(data){
   }
   function showRek(method, number){
     modal.style.display = 'none';
-    rekDisplay.textContent = `${method}: ${number}`;
+    rekDisplay.innerHTML = `
+      <div class="rekCard">
+        <p class="method">${method}</p>
+        <p class="number">${number}</p>
+      </div>
+    `;
     data.payment = method;
     localStorage.setItem('orderData', JSON.stringify(data));
     updateWA();
