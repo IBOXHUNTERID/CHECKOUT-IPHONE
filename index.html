@@ -357,7 +357,22 @@ function calcAndPreview(){
   }
 
   const finalPrice = calcPrice(selectedModel, storage);
-
+  
+  // Simpan data ke Local Storage
+const orderData = {
+  model: phoneData[selectedModel].name,
+  key: selectedModel,
+  storage: storage,
+  color: color,
+  price: finalPrice,
+  nama: nama,
+  alamat: alamat,
+  telepon: tel,
+  wa: wa,
+  img: phoneData[selectedModel].img
+};
+localStorage.setItem('orderData', JSON.stringify(orderData));
+  
   const summary = document.getElementById('orderSummary');
   summary.style.display='block';
   summary.innerHTML = `
