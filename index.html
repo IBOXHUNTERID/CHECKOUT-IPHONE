@@ -173,6 +173,10 @@ xr:["64GB","128GB"],
 "15promax":["256GB","512GB","1TB"]
 };
 
+  function formatRupiah(num) {
+  return "Rp " + num.toLocaleString("id-ID");
+  }
+  
 // HITUNG HARGA +7% PER LEVEL STORAGE
 function calculatePrice(basePrice, model, storage) {
     let list = storageOptions[model];
@@ -201,10 +205,12 @@ function updatePhoneCard(){
     document.getElementById("phoneCard").style.display="block";
     document.getElementById("phoneImg").src=phoneData[m].img;
     document.getElementById("phoneName").textContent=phoneData[m].name;
-    document.getElementById("phonePrice").textContent="Harga dasar: Rp " + phoneData[m].price.toLocaleString();
-  }
-}
 
+    let base = phoneData[m].price;
+    document.getElementById("phonePrice").textContent = 
+      "Harga dasar: " + formatRupiah(base);
+  }
+  }
 function showCheckout(){
   let m=document.getElementById("model").value;
   let s=document.getElementById("storage").value;
@@ -219,22 +225,27 @@ function showCheckout(){
   }
 
   let base = phoneData[m].price;
-  let finalPrice = calculatePrice(base, m, s);
+let finalPrice = base;
 
-  let box=document.getElementById("checkoutBox");
-  box.style.display="block";
-  box.innerHTML=`
-    <h3>Ringkasan Pesanan</h3>
-    <p><b>Model:</b> ${phoneData[m].name}</p>
-    <p><b>Storage:</b> ${s}</p>
-    <p><b>Harga Akhir:</b> Rp ${finalPrice.toLocaleString()}</p>
-    <p><b>Nama:</b> ${n}</p>
-    <p><b>Alamat:</b> ${a}</p>
-    <p><b>No. Telepon:</b> ${t}</p>
-    <p><b>WhatsApp:</b> ${w}</p>
-    <br>
-    <a href="GANTI_LINK_CHECKOUT" style="text-decoration:none;">
-      <button class='btn'>Lanjutkan Checkout</button>
-    </a>`;
+let storageIndex = storageOptions[m].indexOf(s);
+
+// tambah 7% kalau storage bukan yang pertama
+if (storageIndex > 0) {
+    finalPrice = Math.round(base * 1.07);
+}
+
+box.innerHTML = `
+<h3>Ringkasan Pesanan</h3>
+<p><b>Model:</b> ${phoneData[m].name}</p>
+<p><b>Storage:</b> ${s}</p>
+<p><b>Harga:</b> ${formatRupiah(finalPrice)}</p>
+<p><b>Nama:</b> ${n}</p>
+<p><b>Alamat:</b> ${a}</p>
+<p><b>No. Telepon:</b> ${t}</p>
+<p><b>WhatsApp:</b> ${w}</p>
+<br>
+<a href="GANTI_LINK_CHECKOUT" style="text-decoration:none;">
+  <button class='btn'>Lanjutkan Checkout</button>
+</a>`;
 }
 </script>
